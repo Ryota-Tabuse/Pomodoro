@@ -1,37 +1,54 @@
-let TIME_MIN = 0;
-let TIME_SEC = 10;
+let timeMin = 25;
+let timeSec = 0;
 const ONE_MSEC = 1000;
+const reloadTimer = () => {
+    countDownTimer.innerHTML = `${timeMin.toString().padStart(2,'0')}：${timeSec.toString().padStart(2,'0')}`;
+}
+
+let isStarted = false;
 
 const countDownTimer = document.getElementById('timer');
 //初期表示
-countDownTimer.innerHTML = `${TIME_MIN.toString().padStart(2,'0')}：${TIME_SEC.toString().padStart(2,'0')}`;
+reloadTimer();
 
 // 1000ミリ秒ごとに、実行する。
 let TIMER;
 const startTimer = () => {
-    TIMER = setInterval(() => {CountDown()}, ONE_MSEC );
+    if(!isStarted) {
+        TIMER = setInterval(() => {CountDown()}, ONE_MSEC );
+        isStarted = true;
+    }
 }
 
 const stopTimer = () => {
     clearInterval(TIMER);
+    isStarted = false;
+}
+
+const resetTimer = () => {
+    clearInterval(TIMER);
+    isStarted = false;
+    timeMin = 25;
+    timeSec = 0;
+    reloadTimer();
 }
 
 const CountDown = () => {
 
-    if(TIME_SEC === 00){
-        TIME_MIN--;
-        TIME_SEC = 59;
+    if(timeSec === 00){
+        timeMin--;
+        timeSec = 59;
     } else {
-        TIME_SEC--;
+        timeSec--;
     }
 
     //画面を更新
-    countDownTimer.innerHTML = `${TIME_MIN.toString().padStart(2,'0')}：${TIME_SEC.toString().padStart(2,'0')}`;
+    reloadTimer();
 
     // 停止条件
-    if(TIME_MIN === 0 && TIME_SEC === 0 ) {
+    if(timeMin === 0 && timeSec === 0 ) {
         // タイマー解除
         stopTimer();
-        Push.create('更新情報');
     }
 }
+

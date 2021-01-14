@@ -1,11 +1,35 @@
+button {
+    display: inline-block;
+    padding: 0.5em 2em;
+    text-decoration: none;
+    background: #02743b;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 2px #627295;
+    border-radius: 3px;
+}
+btn:active {
+   /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-bottom: none;
+}
 .container{
     width: 100%;
     text-align: center;
     position: relative;
 }
-/* あああ */
-.backgroundImage{
-
+.btnContainer{
+    display: flex;
+}
+.startBtn {
+    flex:1;
+}
+.stopBtn {
+    flex:1;
+}
+.resetBtn {
+    flex:1;
 }
 
 #timer {

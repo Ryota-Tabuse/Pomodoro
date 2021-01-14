@@ -12,9 +12,19 @@
     <div class="container">
         <img src="tomato.png" class="backgroundImage">
         <p id="timer"></p>
+        <div class="btnContainer">
+            <div class="startBtn">
+                <button onclick="startTimer()">開始</button>
+            </div>
+            <div class="stopBtn">
+                <button onclick="stopTimer()">停止</button>
+            </div>
+            <div class="resetBtn">
+                <button onclick="resetTimer()">リセット</button>
+            </div>
+        </div>
     </div>
-    <input type="button" value="開始" onclick="startTimer()"/>
-    <input type="button" value="停止" onclick="stopTimer()"/>
+
     <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
